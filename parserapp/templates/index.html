@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Domain info</title>
+</head>
+<body>
+<form method="post" class="row g-3" id="parseSubmit">
+    {% csrf_token %}
+    <div class="mb-4" align="center">
+        {{ form }}
+        <input type="submit" value="Parse" class="btn btn-primary mb-3">
+    </div>
+</form>
+<div class="mb-4" align="center">
+    <h2 class="title"> Task status: </h2>
+    <h2 class="title" id="taskStatus">Waiting for parse</h2>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Найденный url</th>
+      <th scope="col">Domain</th>
+      <th scope="col">Create date</th>
+      <th scope="col">Update date</th>
+      <th scope="col">Country</th>
+      <th scope="col">Is dead</th>
+    </tr>
+  </thead>
+  <tbody id="data">
+  </tbody>
+</table>
+<script src="{% static 'ajax.js' %}"></script>
+</body>
+</html>
